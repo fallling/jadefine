@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="../templates/jquery-easyui-1.7.0/themes/default/easyui.css">
+        <link rel="stylesheet" type="text/css" href="../templates/jquery-easyui-1.7.0/themes/icon.css">
+        <link rel="stylesheet" type="text/css" href="css/view.css">
+        <script type="text/javascript" src="../templates/jquery-easyui-1.7.0/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../templates/jquery-easyui-1.7.0/demo.css">
+        <script type="text/javascript" src="../templates/jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+        <script type="text/javascript" src="../templates/jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+        <title>登陆</title>
+    </head>
+    <body>
+        <div>
+            <h2>Flash PasswordBox Letters</h2>
+            <p>This example shows how to flash the entered password letter by letter.</p>
+        </div>
+        <div style="margin:20px 0;"></div>
+        <div class="easyui-panel" style="width:400px;padding:50px 60px;">
+            <div style="margin-bottom:20px">
+                <label for="username"></label><input id="username" class="easyui-textbox" prompt="Username" iconWidth="28" style="width:100%;height:34px;padding:10px;">
+            </div>
+            <div style="margin-bottom:20px">
+                <label for="pass"></label><input id="pass" class="easyui-passwordbox" prompt="Password" iconWidth="28" style="width:100%;height:34px;padding:10px">
+            </div>
+        </div>
+        <div id="viewer"></div>
+
+        <script type="text/javascript">
+            $('#pass').passwordbox({
+                inputEvents: $.extend({}, $.fn.passwordbox.defaults.inputEvents, {
+                    keypress: function(e){
+                        const char = String.fromCharCode(e.which);
+                        $('#viewer').html(char).fadeIn(200, function(){
+                            $(this).fadeOut();
+                        });
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>
