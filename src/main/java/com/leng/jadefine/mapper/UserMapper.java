@@ -15,9 +15,13 @@ import java.util.List;
  */
 @Mapper
 public interface UserMapper {
-    @Select("select * from user where id = #{id}")
+    @Select("select * from user_info where id = #{id}")
     User queryById(@Param("id") int id);
 
-    @Select("select * from user")
+    @Select("select * from user_info where userName = #{userName}")
+    User queryByUserName(@Param("userName") String userName);
+
+    @Select("select * from user_info")
     List<User> queryAll();
+
 }

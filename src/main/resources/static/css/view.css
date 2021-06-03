@@ -5,3 +5,42 @@
     font-size: 54px;
     line-height: 60px;
 }
+
+.body{
+    background-image: url('../image/bg.png');
+    background-size: cover;
+}
+
+.header{
+    height: 80px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.header .title{
+    float: left;
+    padding-left: 20px;
+}
+
+.header .info{
+    float: right;
+    height: 80px;
+    line-height: 80px;
+    margin-right: 20px;
+}
+
+.header .info :after{
+    content: '|';
+    margin: 0 5px;
+}
+
+.header .info :last-child:after{
+    content: '';
+    margin: 0 5px;
+}
+
+.foot{
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}

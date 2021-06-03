@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="../static/css/view.css" th:href="@{css/view.css}">
+        <link rel="stylesheet" type="text/css" href="../static/jquery-easyui-1.7.0/themes/default/easyui.css" th:href="@{jquery-easyui-1.7.0/themes/default/easyui.css}">
+        <link rel="stylesheet" type="text/css" href="../static/jquery-easyui-1.7.0/themes/icon.css" th:href="@{jquery-easyui-1.7.0/themes/icon.css}">
+        <script type="text/javascript" src="../static/jquery-easyui-1.7.0/jquery.min.js" th:src="@{jquery-easyui-1.7.0/jquery.min.js}"></script>
+        <link rel="stylesheet" type="text/css" href="../static/jquery-easyui-1.7.0/demo/demo.css" th:href="@{jquery-easyui-1.7.0/demo/demo.css}">
+        <script type="text/javascript" src="../static/jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js" th:src="@{jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js}"></script>
+        <script type="text/javascript" src="../static/jquery-easyui-1.7.0/jquery.easyui.min.js" th:src="@{jquery-easyui-1.7.0/jquery.easyui.min.js}"></script>
+
+        <title>登陆</title>
+    </head>
+    <body class="body">
+        <div style="text-align: center;color: #e6e6e6;margin-top: 150px">
+            <h2>Flash PasswordBox Letters</h2>
+            <p>This example shows how to flash the entered password letter by letter.</p>
+        </div>
+        <div style="margin:20px 0;"></div>
+        <div class="easyui-panel" style="width:400px;padding:50px 60px;" data-options="novalidate:true">
+            <form id="ff" th:method="post" th:action="@{/login}">
+                <div style="margin-bottom:20px">
+                    <label for="username"></label>
+                    <input id="username" class="easyui-textbox" prompt="Username" iconWidth="28"
+                           style="width:100%;height:34px;padding:10px;" name="userName" data-options="required:true"/>
+                </div>
+                <div style="margin-bottom:20px">
+                    <label for="password"></label>
+                    <input id="password" class="easyui-passwordbox" prompt="Password" iconWidth="28"
+                           style="width:100%;height:34px;padding:10px" name="password" data-options="required:true">
+                </div>
+                <div>
+                    <input type="submit" value="登陆" style="width:100%;height:34px;">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
