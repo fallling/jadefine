@@ -1,6 +1,7 @@
 package com.leng.jadefine.mapper;
 
 import com.leng.jadefine.model.User;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -24,4 +25,17 @@ public interface UserMapper {
     @Select("select * from user_info")
     List<User> queryAll();
 
+/*    @Insert("insert into user_info(userName, password, realName, sex, address, question, answer, email, favorite, score, regDate) \n" +
+            "VALUES\n" +
+            "(#{userName},#{password},#{realName},#{sex},#{address},#{question},#{answer},#{email},#{favorite},#{score},getDate())")
+    void addUser(@Param("userName") String userName,@Param("password") String password,@Param("realName") String realName,
+                @Param("sex") String sex, @Param("address") String address,@Param("question") String question,
+                @Param("answer") String answer,@Param("email") String email,@Param("favorite") String favorite,
+                @Param("score") int score);*/
+
+    @Insert("""
+            insert into user_info(userName, password, realName, sex, address, question, answer, email, favorite, score)
+            VALUES
+            (#{userName},#{password},#{realName},#{sex},#{address},#{question},#{answer},#{email},#{favorite},#{score})""")
+    void addUser(User user);
 }

@@ -17,4 +17,5 @@ public interface UserService {
     List<User> queryAll();
     User queryById(int id);
     User queryByUserName(String userName);
+    void addUser(User user);
 }

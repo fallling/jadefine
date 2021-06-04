@@ -12,7 +12,7 @@
     <script type="text/javascript" src="../static/jquery-easyui-1.7.0/jquery.easyui.min.js" th:src="@{jquery-easyui-1.7.0/jquery.easyui.min.js}"></script>
 
 </head>
-<body style="background: url(../static/image/bg.png); background-size: cover" th:style="'background: url(' + @{image/bg.png} + ');background-size: cover'">
+<body>
 <h2>Basic CRUD Application</h2>
 <p>Click the buttons on datagrid toolbar to do crud actions.</p>
 
@@ -39,7 +39,10 @@
     <form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
         <h3>User Information</h3>
         <div style="margin-bottom:10px">
-            <input name="firstname" class="easyui-textbox" required="true" label="First Name:" style="width:100%">
+            <label>
+                firstname
+                <input name="firstname" class="easyui-textbox" required="true"style="width:100%">
+            </label>
         </div>
         <div style="margin-bottom:10px">
             <input name="lastname" class="easyui-textbox" required="true" label="Last Name:" style="width:100%">

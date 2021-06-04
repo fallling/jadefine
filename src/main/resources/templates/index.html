@@ -9,10 +9,8 @@
     <link rel="stylesheet" type="text/css" href="../static/jquery-easyui-1.7.0/themes/icon.css" th:href="@{jquery-easyui-1.7.0/themes/icon.css}">
     <script type="text/javascript" src="../static/jquery-easyui-1.7.0/jquery.min.js" th:src="@{jquery-easyui-1.7.0/jquery.min.js}"></script>
     <link rel="stylesheet" type="text/css" href="../static/jquery-easyui-1.7.0/demo/demo.css" th:href="@{jquery-easyui-1.7.0/demo/demo.css}">
-    <script type="text/javascript" src="../static/jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js" th:src="@{jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js}"></script>
     <script type="text/javascript" src="../static/jquery-easyui-1.7.0/jquery.easyui.min.js" th:src="@{jquery-easyui-1.7.0/jquery.easyui.min.js}"></script>
-
-
+    <script type="text/javascript" src="../static/jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js" th:src="@{jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js}"></script>
     <script>
         $(function () {
             let menuTree = $("#menuTree");
@@ -29,20 +27,37 @@
 <div class="easyui-panel" style="padding: 10px;width: 1420px">
     <div id="easyui-layout" class="easyui-layout" style="width: 1400px;height: 800px;margin: 0 auto">
         <div data-options="region:'north'" class="header" style="overflow: hidden;">
-            <h1 class="title">Spring Boot and Easyui</h1>
+            <h1 class="title">JadeFine 后台管理系统</h1>
             <div class="info">
-                <a>管理员</a>
+                <a >管理员</a>
                 <a>注销</a>
             </div>
         </div>
         <div data-options="region:'west'" title="导航" style="width:150px">
             <ul class="easyui-tree" id="menuTree">
                 <li>
-                    <span>系统管理</span>
+                    <span>管理后台</span>
                     <ul>
-                        <li data-options="href:'/system/permission'">权限管理</li>
-                        <li data-options="href:'/system/role'">角色管理</li>
-                        <li data-options="href:'/system/user'">用户管理</li>
+                        <li data-options="href:'/system/product'">
+                            <span>产品管理</span>
+                            <ul>
+                                <li>产品列表</li>
+                                <li>产品类型列表</li>
+                            </ul>
+                        </li>
+                        <li data-options="href:'/system/order'">
+                            <span>订单管理</span>
+                            <ul>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <span>用户管理</span>
+                            <ul>
+                                <li data-options="href:'/system/user'">用户列表</li>
+                                <li>管理员列表</li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>

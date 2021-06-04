@@ -1,7 +1,10 @@
-
+<!--工具栏-->
 <div id="toolbar">
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New User</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="formDialog()">添加用户</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="searchUser()">查询用户</a>
 </div>
+
+<!--用户列表-->
 <table id="dg" class="easyui-datagrid" style="width:fit-content;height:600px;"
        data-options="singleSelect:true,collapsible:true,url:'/system/user/users',method:'get'"
        xmlns="http://www.w3.org/1999/html">
@@ -25,6 +28,7 @@
 </table>
 
 <script>
+    /*动态添加编辑/删除按钮*/
     function operate_formatter(value,row,index){
         return "<a href='#' class='easyui-linkbutton'>编辑</a>/\
         <a href='#' class='easyui-linkbutton'>删除</a>"

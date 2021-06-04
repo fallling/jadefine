@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+
 
 import java.util.List;
 
@@ -19,19 +19,31 @@ import java.util.List;
 @Controller
 @RequestMapping("/system/user")
 public class UserController {
+
     @RequestMapping
     public void index(){};
+
     @Autowired
     @Qualifier("userService")
     UserServiceImpl userService;
 
-/*    @RequestMapping(value = "userlist",method = RequestMethod.GET)
-    public ModelAndView userlist(){
-        return new ModelAndView("userlist");
-    }*/
+    /*添加用户*/
+    @RequestMapping(value = "/addUser",method = RequestMethod.POST)
+    public String addUser(User user,String name){
+        System.out.println(user);
+        userService.addUser(user);
+        name = "success";
+        return "/system/user/form";
+    }
 
-    //读取user数据表
-    @RequestMapping(value = "/users",method = RequestMethod.GET)
+    /*根据用户名查询用户*/
+    @RequestMapping("queryUserByUserName")
+    public User queryUserByName(String username){
+        return userService.queryByUserName(username);
+    }
+
+    /*读取user数据表*/
+    @RequestMapping(value = "users",method = RequestMethod.GET)
     @ResponseBody
     public List<User> getUsers(){
         return userService.queryAll();

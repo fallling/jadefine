@@ -7,11 +7,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpSession;
 
 /**
  * FileName:IndexController
@@ -37,15 +32,15 @@ public class IndexController {
         User user1 = userService.queryByUserName(user.getUserName());
         if(user1 != null){
             if(user1.getPassword().equals(user.getPassword())){
-                return "index";
+                return "redirect:/index.html";
             }else return "error";
         }else{
             return "error";
         }
     }
 
-    @GetMapping("index")
+    @GetMapping("/index.html")
     public String mainPage(){
-        return "index";
+        return "/index";
     }
 }
