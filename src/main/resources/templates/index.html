@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>JadeFine</title>
 
-    <link rel="stylesheet" type="text/css" href="../static/css/view.css" th:href="@{css/view.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{css/main.css}">
     <link rel="stylesheet" type="text/css" href="../static/jquery-easyui-1.7.0/themes/default/easyui.css" th:href="@{jquery-easyui-1.7.0/themes/default/easyui.css}">
     <link rel="stylesheet" type="text/css" href="../static/jquery-easyui-1.7.0/themes/icon.css" th:href="@{jquery-easyui-1.7.0/themes/icon.css}">
     <script type="text/javascript" src="../static/jquery-easyui-1.7.0/jquery.min.js" th:src="@{jquery-easyui-1.7.0/jquery.min.js}"></script>
@@ -33,29 +33,28 @@
                 <a>注销</a>
             </div>
         </div>
-        <div data-options="region:'west'" title="导航" style="width:150px">
+        <div data-options="region:'west'" title="导航" style="width:200px">
             <ul class="easyui-tree" id="menuTree">
                 <li>
                     <span>管理后台</span>
                     <ul>
-                        <li data-options="href:'/system/product'">
+                        <li>
                             <span>产品管理</span>
                             <ul>
-                                <li>产品列表</li>
-                                <li>产品类型列表</li>
+                                <li data-options="href:'/system/product'">产品列表</li>
                             </ul>
                         </li>
-                        <li data-options="href:'/system/order'">
+                        <li>
                             <span>订单管理</span>
                             <ul>
-
+                                <li data-options="href:'/system/order'">订单列表</li>
                             </ul>
                         </li>
                         <li>
                             <span>用户管理</span>
                             <ul>
                                 <li data-options="href:'/system/user'">用户列表</li>
-                                <li>管理员列表</li>
+                                <li data-options="href:'/system/admin'">管理员列表</li>
                             </ul>
                         </li>
                     </ul>

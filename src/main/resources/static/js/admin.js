@@ -1,25 +1,19 @@
 $(function (){
-    const userListGrid = $('#userListGrid');
-    userListGrid.datagrid({
+    const adminListGrid = $('#adminListGrid');
+    adminListGrid.datagrid({
         fit:true,
         border:false,
-        url:'/system/user/list',
+        url:'/system/admin/list',
         idField:'id',
         treeField:'name',
         columns:[[
-            {field:'id',title:'用户id',width:80,align: 'center'},
-            {field:'userName',title:'用户名',width:100,align: 'center'},
-            {field:'password',title:'密码',width:150,align:'center'},
-            {field:'realName',title:'真实姓名',width:100,align:'center'},
-            {field:'sex',title:'性别',width:80,align:'center'},
-            {field:'address',title:'地址',width:150,align:'center'},
-            {field:'email',title:'邮箱',width:150,align:'center'},
-            {field:'score',title:'等级',width:80,align:'center'},
-            {field:'regDate',title:'注册日期',width:80,align:'center'},
-            {field:'status',title:'状态',width:80,align:'center'},
+            {field:'id',title:'管理员id',width:150,align: 'center'},
+            {field:'name',title:'管理员名称',width:100,align: 'center'},
+            {field:'pwd',title:'密码',width:150,align:'center'},
+            {field:'role',title:'角色',width:100,align:'center'},
             {field:'operate',title:'操作',width:100,align:'center',
                 formatter:function (val,row) {
-                    const buttons = [];
+                    var buttons = [];
                     buttons.push('<a data-id="'+row.id+'" class="actions edit">编辑</a>');
                     buttons.push('<a data-id="'+row.id+'" class="actions delete">删除</a>');
                     return buttons.join("");
@@ -27,14 +21,14 @@ $(function (){
         ]],
         toolbar:[
             {
-                text:'添加用户',
+                text:'添加管理员',
                 iconCls:'icon-add',
                 handler:function () {
                     formDialog()
                 }
             },
             {
-                text: '查询用户',
+                text: '查询管理员',
                 iconCls: 'icon-search',
                 handler:function () {
 
@@ -43,7 +37,7 @@ $(function (){
         ]
     });
 
-    var gridPanel = userListGrid.datagrid("getPanel")
+    var gridPanel = adminListGrid.datagrid("getPanel")
 
     //给操作按钮绑定事件
     gridPanel.on("click","a.edit",function () {
@@ -53,8 +47,8 @@ $(function (){
         var id =this.dataset.id;
         $.messager.confirm("提示","是否删除？",function (r) {
             if (r){
-                $.get("/system/user/delete?id="+id).success(function () {
-                    userListGrid.datagrid("reload");
+                $.get("/system/admin/delete?id="+id).success(function () {
+                    adminListGrid.datagrid("reload");
                 })
             }
         })
@@ -64,9 +58,9 @@ $(function (){
     function formDialog(id) {
         const dialog = $('<div/>').dialog({
             title:(id?'编辑':'添加')+'管理员',
-            href: '/system/user/'+(id?'load?id='+id:'form'),
-            width: 420,
-            height: 550,
+            href: '/system/admin/'+(id?'load?id='+id:'form'),
+            width: 350,
+            height: 380,
             onClose: function () {
                 $(this).dialog("destroy");
             },
@@ -75,12 +69,12 @@ $(function (){
                     text: '保存',
                     iconCls:'icon-ok',
                     handler: function () {
-                        const userForm = $('#userForm');
-                        if (userForm.form("validate")) {
-                            $.post("/system/user/"+(id?'update':'save'),
-                                userForm.serialize()
+                        const adminForm = $('#adminForm');
+                        if (adminForm.form("validate")) {
+                            $.post("/system/admin/"+(id?'update':'save'),
+                                adminForm.serialize()
                             ).success(function () {
-                                userListGrid.datagrid("reload");
+                                adminListGrid.datagrid("reload");
                                 dialog.dialog("close");
                             });
                         }
@@ -93,8 +87,8 @@ $(function (){
                                 msg: result.errorMsg
                             });
                         } else {
-                            $('#userForm').dialog('close');		// close the dialog
-                            $('#userListGrid').datagrid('reload');	// reload the user data
+                            $('#adminForm').dialog('close');		// close the dialog
+                            $('#adminListGrid').datagrid('reload');	// reload the user data
                         }
                     }
                 },

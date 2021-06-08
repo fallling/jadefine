@@ -1,31 +1,35 @@
 package com.leng.jadefine.controller.system;
 
 import com.leng.jadefine.conmmon.JsonResult;
-import com.leng.jadefine.model.User;
-import com.leng.jadefine.service.impl.UserServiceImpl;
+import com.leng.jadefine.model.Admin;
+import com.leng.jadefine.service.impl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
 import java.util.List;
 
 /**
- * FileName:UserController
+ * FileName:AdminController
  * Author:fall
- * Date:2021/5/29 22:54
- * Description:userController
+ * Date:2021/6/7 1:16
+ * Description:管理员 controller
  */
 @Controller
-@RequestMapping("/system/user")
-public class UserController {
+@RequestMapping("/system/admin")
+public class AdminController {
+
     @Autowired
-    @Qualifier("userService")
-    private UserServiceImpl userService;
+    @Qualifier("adminService")
+    private AdminServiceImpl adminService;
+
 
     @RequestMapping
     public void index(){
@@ -35,23 +39,23 @@ public class UserController {
     public String form(Integer id, Model model){
         if(id!=null){
             /*编辑*/
-            User user = userService.queryById(id);
-            model.addAttribute("user",user);
+            Admin admin = adminService.queryById(id);
+            model.addAttribute("admin",admin);
         }
-        return "/system/user/form";
+        return "/system/admin/form";
     }
 
     @PostMapping("list")
     @ResponseBody
-    public List<User> list(){
-        return userService.queryAll();
+    public List<Admin> list(){
+        return adminService.queryAll();
     }
 
     @PostMapping({"save","update"})
     @ResponseBody
-    public JsonResult from(@Valid User user , BindingResult bindingResult){
-        System.out.println(user);
-        userService.saveUser(user);
+    public JsonResult from(@Valid Admin admin, BindingResult bindingResult){
+        System.out.println(admin);
+        adminService.saveAdmin(admin);
         return JsonResult.success();
     }
 
@@ -59,9 +63,9 @@ public class UserController {
     @ResponseBody
     public JsonResult delete(int id){
         System.out.println(id);
-        User user = userService.queryById(id);
-        if(user!=null){
-            userService.deleteUser(id);
+        Admin admin = adminService.queryById(id);
+        if(admin!=null){
+            adminService.deleteAdmin(id);
             return JsonResult.success();
         }else {
             return JsonResult.error();

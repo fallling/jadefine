@@ -19,10 +19,8 @@ public class User {
     private String realName;
     private String sex;
     private String address;
-    private String question;
-    private String answer;
     private String email;
-    private String favorite;
     private int score;
     private Date regDate;
+    private boolean status;
 }

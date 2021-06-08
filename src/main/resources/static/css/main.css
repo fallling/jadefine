@@ -44,3 +44,22 @@
     line-height: 30px;
     text-align: center;
 }
+
+a.actions{
+    cursor: pointer;
+}
+
+a.actions{
+    padding-right: 3px;
+}
+a.actions:after{
+    content: "|";
+    margin:5px;
+}
+a.actions:last-child:after{
+    content: "";
+    margin: 0;
+}
+a.actions:hover{
+    color: #ff9900;
+}

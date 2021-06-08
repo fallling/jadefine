@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
-  <!--添加用户弹出框-->
-  <div id="dlg" class="easyui-dialog" style="width:480px;height: 550px" data-options="closed:true,modal:true,border:'thin',buttons:'#dlg-buttons'">
-    <form id="fm" th:method="post" th:action="@{/system/user/addUser}" novalidate style="margin:0;padding:20px 50px">
-      <h3>用户信息</h3>
+<form id="userForm" th:method="post" th:action="@{/system/user/save}" novalidate style="width: 360px; height: 400px;margin:0;padding:20px 50px">
+
+    <h3>用户信息</h3>
+    <input type="hidden" name="id" th:value="${user?.id}">
       <div style="margin-bottom:10px">
-        <label for="userName"></label><input id="userName" name="userName" class="easyui-textbox" required label="用户名:" style="width:100%;">
+        <label for="userName"></label>
+        <input id="userName" name="userName" th:value="${user?.userName}" class="easyui-textbox" required label="用户名:" style="width:100%;">
       </div>
       <div style="margin-bottom:10px">
         <label for="password"></label><input id="password" name="password" class="easyui-textbox" required label="密码:" style="width:100%">
@@ -21,28 +22,17 @@
         <label for="address"></label><input id="address" name="address" class="easyui-textbox" label="地址:" style="width:100%">
       </div>
       <div style="margin-bottom:10px">
-        <label for="question"></label><input id="question" name="question" class="easyui-textbox" label="密保问题:" style="width:100%">
+        <label for="email"></label><input id="email" name="email" class="easyui-textbox" label="邮箱:" style="width:100%">
       </div>
       <div style="margin-bottom:10px">
-        <label for="answer"></label><input id="answer" name="answer" class="easyui-textbox" label="密保答案:" style="width:100%">
+        <label for="score"></label><input id="score" name="score" class="easyui-textbox" label="等级:" style="width:100%">
       </div>
       <div style="margin-bottom:10px">
-        <label for="email"></label><input id="email" name="email" class="easyui-textbox" label="email:" style="width:100%">
+        <label for="regDate"></label><input id="regDate" name="regDate" class="easyui-textbox" label="注册日期:" style="width:100%">
       </div>
-    </form>
-  </div>
-  <!--弹出框按钮-->
-  <div id="dlg-buttons">
-    <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()" style="width:90px">保存</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="$('#dlg').dialog('close')" style="width:90px">取消</a>
-  </div>
+      <div style="margin-bottom:10px">
+        <label for="status"></label><input id="status" name="status" class="easyui-textbox" label="状态:" style="width:100%">
+      </div>
+</form>
 </body>
-
-<script>
-  /*添加新用户*/
-  function newUser(){
-  $('#dlg').dialog('open').dialog('center').dialog('setTitle','添加用户');
-  $('#fm').form('clear');
-  }
-</script>
 </html>

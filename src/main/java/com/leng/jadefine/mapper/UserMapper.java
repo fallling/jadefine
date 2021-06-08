@@ -1,10 +1,7 @@
 package com.leng.jadefine.mapper;
 
 import com.leng.jadefine.model.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -33,9 +30,12 @@ public interface UserMapper {
                 @Param("answer") String answer,@Param("email") String email,@Param("favorite") String favorite,
                 @Param("score") int score);*/
 
-    @Insert("""
-            insert into user_info(userName, password, realName, sex, address, question, answer, email, favorite, score)
-            VALUES
-            (#{userName},#{password},#{realName},#{sex},#{address},#{question},#{answer},#{email},#{favorite},#{score})""")
+    @Insert("insert into user_info(userName, password, realName, sex, address, email, score)VALUES (#{userName},#{password},#{realName},#{sex},#{address},#{email},#{score})")
     void addUser(User user);
+
+    @Delete("delete from user_info where id=#{id}")
+    void deleteUser(@Param("id") int id);
+
+    @Update("update user_info set userName=#{userName},password=#{password},realName=#{realName},sex=#{sex},address=#{address},email=#{email},score=#{score},regDate=#{regDate} where id=#{id}")
+    void updateUser(User user);
 }

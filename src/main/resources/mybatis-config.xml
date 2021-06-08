@@ -16,5 +16,9 @@
     </environments>
     <mappers>
         <mapper class="com.leng.jadefine.mapper.UserMapper"/>
+        <mapper class="com.leng.jadefine.mapper.AdminMapper"/>
+        <mapper class="com.leng.jadefine.mapper.ProductMapper"/>
+        <mapper class="com.leng.jadefine.mapper.OrderMapper"/>
+        <mapper class="com.leng.jadefine.mapper.OrderDetailMapper"/>
     </mappers>
 </configuration>

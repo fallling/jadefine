@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<form id="productForm" th:action="@{/system/product/save}" th:method="post" style="width: 360px; height: 500px; margin:0;padding:30px 30px">
+
+  <h3>商品信息</h3>
+  <input type="hidden" name="id" th:value="${product?.id}">
+  <div class="form_line"  style="margin-bottom: 10px">
+    <label for="code"></label>
+    <input id="code" name="code" type="text" th:value="${product?.code}" label="编号:" class="easyui-textbox" required style="width:100%;">
+  </div>
+
+  <div class="form-line" style="margin-bottom: 10px">
+    <label for="name"></label>
+    <input id="name" name="name" type="text" th:value="${product?.name}" label="名称:" class="easyui-textbox" required style="width:100%;">
+  </div>
+
+  <div class="form-line" style="margin-bottom: 10px">
+  <label for="type"></label>
+  <input id="type" name="type" type="text" label="类型:" th:value="${product?.type}" class="easyui-textbox"  style="width:100%;">
+  </div>
+
+  <div class="form-line" style="margin-bottom: 10px">
+    <label for="brand"></label>
+    <input id="brand" name="brand" type="text" label="品牌:" th:value="${product?.brand}" class="easyui-textbox"  style="width:100%;">
+  </div>
+
+  <div class="form-line" style="margin-bottom: 10px">
+    <label for="pic"></label>
+    <input id="pic" name="pic" type="text" label="图片:" th:value="${product?.pic}" class="easyui-textbox"  style="width:100%;">
+  </div>
+
+  <div class="form-line" style="margin-bottom: 10px">
+    <label for="num"></label>
+    <input id="num" name="num" type="text" label="数量:" th:value="${product?.num}" class="easyui-textbox"  style="width:100%;">
+  </div>
+
+  <div class="form-line" style="margin-bottom: 20px">
+    <label for="price"></label>
+    <input id="price" name="price" type="text" label="价格:" th:value="${product?.price}" class="easyui-textbox"  style="width:100%;">
+  </div>
+
+  <div class="form-line" style="margin-bottom: 10px">
+    <label for="intro"></label>
+    <input id="intro" name="intro" type="text" label="详情:" th:value="${product?.intro}" class="easyui-textbox"  style="width:100%;">
+  </div>
+
+  <div class="form-line" style="margin-bottom: 20px">
+    <label for="status"></label>
+    <input id="status" name="status" type="text" label="状态:" th:value="${product?.status}" class="easyui-textbox"  style="width:100%;">
+  </div>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<form id="adminForm" th:action="@{/system/admin/save}" th:method="post" style=" margin:30px;padding:20px 50px">
+
+        <h3>管理员信息</h3>
+        <input type="hidden" name="id" th:value="${admin?.id}">
+        <div class="form-line" style="margin-bottom: 10px">
+            <label for="name">管理员名称:</label>
+            <input id="name" name="name" type="text" th:value="${admin?.name}" class="easyui-textbox" required style="width:100%;">
+        </div>
+
+        <div class="form_line"  style="margin-bottom: 10px">
+            <label for="pwd">密码:</label>
+            <input id="pwd" name="pwd" type="text" th:value="${admin?.pwd}" class="easyui-textbox" required style="width:100%;">
+        </div>
+
+        <div class="form-line" style="margin-bottom: 10px">
+            <label for="role">角色:</label>
+            <input id="role" name="role" type="text" th:value="${admin?.role}" class="easyui-textbox" required style="width:100%;">
+        </div>
+</form>
+</body>
+</html>

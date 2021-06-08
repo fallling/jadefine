@@ -14,8 +14,18 @@ import java.util.List;
  */
 
 public interface UserService {
+
     List<User> queryAll();
+
     User queryById(int id);
+
     User queryByUserName(String userName);
+
     void addUser(User user);
+
+    void deleteUser(int id);
+
+    void updateUser(User user);
+
+    void saveUser(User user);
 }
