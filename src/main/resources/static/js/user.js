@@ -17,7 +17,14 @@ userListGrid.datagrid({
         {field:'email',title:'邮箱',width:160,align:'center'},
         {field:'score',title:'等级',width:80,align:'center'},
         {field:'regDate',title:'注册日期',width:120,align:'center'},
-        {field:'status',title:'状态',width:80,align:'center'},
+        {field:'status',title:'状态',width:80,align:'center',
+            formatter: function (val,row) {
+                if(val == true){
+                    return "可用"
+                }else
+                    return "禁用"
+            }
+        },
         {field:'operate',title:'操作',width:100,align:'center',
             formatter:function (val,row) {
                 const buttons = [];

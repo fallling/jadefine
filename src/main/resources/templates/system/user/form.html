@@ -19,7 +19,18 @@
       </div>
       <div style="margin-bottom:10px">
         <label for="sex"></label>
-        <input id="sex" name="sex" th:value="${user?.getSex()}" class="easyui-textbox" label="性别:" style="width:100%">
+        <input
+                id="sex"
+                name="sex"
+                th:value="${user?.getSex()}"
+                class="easyui-textbox"
+                label="性别:"
+                style="width:100%">
+<!--            <label style="margin-right: 40px">性别:</label>
+            <label for="male">男:</label>
+            <input type="radio" id="male" name="sex" th:checked="${user?.sex.equals('男')}"  th:value="男">
+            <label for="female">女:</label>
+            <input type="radio" id="female" name="sex" th:checked="${user?.sex.equals('女')}" th:value="女">-->
       </div>
       <div style="margin-bottom:10px">
         <label for="address"></label>
@@ -38,8 +49,14 @@
         <input id="regDate" name="regDate" th:value="${user?.regDate}" class="easyui-textbox" label="注册日期:" style="width:100%">
       </div>
       <div style="margin-bottom:10px">
-        <label for="status"></label>
-        <input id="status" name="status" th:value="${user?.status}" class="easyui-textbox" label="状态:" style="width:100%">
+        <label for="status" style="margin-right: 40px">状态:</label>
+        <!--<input id="status" name="status" th:value="${user?.status}" class="easyui-textbox" label="状态:" style="width:100%">-->
+        <input id="status"
+                name="status"
+                class="easyui-switchbutton"
+                data-options="onText:'启用',offText:'禁用'"
+                th:checked="${user?.status}"
+        >
       </div>
 </form>
 </body>

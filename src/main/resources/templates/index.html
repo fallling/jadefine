@@ -50,7 +50,7 @@
                                 <li data-options="href:'/system/order'">订单列表</li>
                             </ul>
                         </li>
-                        <li>
+                        <li th:if="${session.admin.getRole().equals('超级管理员')}">
                             <span>用户管理</span>
                             <ul>
                                 <li data-options="href:'/system/user'">用户列表</li>

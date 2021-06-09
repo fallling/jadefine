@@ -6,18 +6,26 @@
         <h3>管理员信息</h3>
         <input type="hidden" name="id" th:value="${admin?.id}">
         <div class="form-line" style="margin-bottom: 10px">
-            <label for="name">管理员名称:</label>
-            <input id="name" name="name" type="text" th:value="${admin?.userName}" class="easyui-textbox" required style="width:100%;">
+            <label for="userName">管理员名称:</label>
+            <input id="userName" name="userName" type="text" th:value="${admin?.userName}" class="easyui-textbox" required style="width:100%;">
         </div>
 
         <div class="form_line"  style="margin-bottom: 10px">
-            <label for="pwd">密码:</label>
-            <input id="pwd" name="pwd" type="text" th:value="${admin?.password}" class="easyui-textbox" required style="width:100%;">
+            <label for="password">密码:</label>
+            <input id="password" name="password" type="text" th:value="${admin?.password}" class="easyui-textbox" required style="width:100%;">
         </div>
 
         <div class="form-line" style="margin-bottom: 10px">
             <label for="role">角色:</label>
-            <input id="role" name="role" type="text" th:value="${admin?.role}" class="easyui-textbox" required style="width:100%;">
+            <select
+                    id="role"
+                    class="easyui-combobox"
+                    name="role"
+                    style="height:30px ; width: 100%"
+                    data-options="editable:false,panelHeight:'auto'">
+                <option value="管理员">管理员</option>
+                <option value="超级管理员">超级管理员</option>
+            </select>
         </div>
 </form>
 </body>
