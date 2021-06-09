@@ -20,18 +20,21 @@ public interface AdminMapper {
     @Select("select * from admin_info where id=#{id}")
     Admin queryById(@Param("id") int id);
 
-    @Select("select * from admin_info where name=#{name}")
-    List<Admin> queryByName(@Param("name") String name);
+/*    @Select("select * from admin_info where name=#{name}")
+    List<Admin> queryByName(@Param("name") String name);*/
+
+    @Select("select * from admin_info where userName=#{userName}")
+    Admin queryByUserName(@Param("userName") String userName);
 
     @Select("select * from admin_info where role=#{role}")
     List<Admin> queryByRole(@Param("role") String role);
 
-    @Insert("insert into admin_info(name,pwd,role) values(#{name},#{pwd},#{role})")
+    @Insert("insert into admin_info(userName,password,role) values(#{userName},#{password},#{role})")
     void addAdmin(Admin admin);
 
     @Delete("delete from admin_info where id=#{id}")
     void deleteAdmin(@Param("id") int id );
 
-    @Update("update admin_info set name=#{name},pwd=#{pwd},role=#{role} where id=#{id}")
+    @Update("update admin_info set userName=#{userName},password=#{password},role=#{role} where id=#{id}")
     void updateAdmin(Admin admin);
 }

@@ -8,8 +8,8 @@ adminListGrid.datagrid({
     treeField:'name',
     columns:[[
         {field:'id',title:'管理员id',width:150,align: 'center'},
-        {field:'name',title:'管理员名称',width:100,align: 'center'},
-        {field:'pwd',title:'密码',width:150,align:'center'},
+        {field:'userName',title:'管理员账号',width:100,align: 'center'},
+        {field:'password',title:'密码',width:150,align:'center'},
         {field:'role',title:'角色',width:100,align:'center'},
         {field:'operate',title:'操作',width:100,align:'center',
             formatter:function (val,row) {

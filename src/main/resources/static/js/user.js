@@ -13,10 +13,10 @@ userListGrid.datagrid({
         {field:'password',title:'密码',width:150,align:'center'},
         {field:'realName',title:'真实姓名',width:100,align:'center'},
         {field:'sex',title:'性别',width:80,align:'center'},
-        {field:'address',title:'地址',width:150,align:'center'},
-        {field:'email',title:'邮箱',width:150,align:'center'},
+        {field:'address',title:'地址',width:140,align:'center'},
+        {field:'email',title:'邮箱',width:160,align:'center'},
         {field:'score',title:'等级',width:80,align:'center'},
-        {field:'regDate',title:'注册日期',width:80,align:'center'},
+        {field:'regDate',title:'注册日期',width:120,align:'center'},
         {field:'status',title:'状态',width:80,align:'center'},
         {field:'operate',title:'操作',width:100,align:'center',
             formatter:function (val,row) {

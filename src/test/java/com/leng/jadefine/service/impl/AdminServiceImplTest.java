@@ -30,8 +30,8 @@ class AdminServiceImplTest {
     }
 
     @Test
-    void queryByName() {
-        List<Admin> adminList = adminService.queryByName("马超");
+    void queryByUserName() {
+        Admin adminList = adminService.queryByUserName("马超");
         System.out.println(adminList);
     }
 
@@ -44,8 +44,8 @@ class AdminServiceImplTest {
     @Test
     void addAdmin() {
         Admin admin = new Admin();
-        admin.setName("曜");
-        admin.setPwd("123456");
+        admin.setUserName("曜");
+        admin.setPassword("123456");
         admin.setRole("管理员");
         adminService.addAdmin(admin);
     }
@@ -54,8 +54,8 @@ class AdminServiceImplTest {
     void deleteAdmin() {
         Admin admin = new Admin();
         admin.setId(1);
-        admin.setName("马超");
-        admin.setPwd("123456");
+        admin.setUserName("马超");
+        admin.setPassword("123456");
         admin.setRole("管理员");
         adminService.deleteAdmin(1);
     }
@@ -65,8 +65,8 @@ class AdminServiceImplTest {
         //System.out.println(adminService.queryById(1));
         Admin admin = new Admin();
         admin.setId(1);
-        admin.setName("李四");
-        admin.setPwd("112345");
+        admin.setUserName("李四");
+        admin.setPassword("112345");
         admin.setRole("管理员");
         //System.out.println(admin);
         adminService.updateAdmin(admin);

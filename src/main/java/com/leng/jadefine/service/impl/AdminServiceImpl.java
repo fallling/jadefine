@@ -41,12 +41,12 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<Admin> queryByName(String name) {
+    public Admin queryByUserName(String name) {
         SqlSession sqlSession = MybatisUtil.getSqlSession();
         AdminMapper adminMapper = sqlSession.getMapper(AdminMapper.class);
-        List<Admin> adminList = adminMapper.queryByName(name);
+        Admin admin = adminMapper.queryByUserName(name);
         sqlSession.close();
-        return adminList;
+        return admin;
     }
 
     @Override

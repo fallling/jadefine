@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 public class Admin {
     private int id;
-    private String name;
-    private String pwd;
+    private String userName;
+    private String password;
     private String role;
 }

@@ -7,12 +7,12 @@
         <input type="hidden" name="id" th:value="${admin?.id}">
         <div class="form-line" style="margin-bottom: 10px">
             <label for="name">管理员名称:</label>
-            <input id="name" name="name" type="text" th:value="${admin?.name}" class="easyui-textbox" required style="width:100%;">
+            <input id="name" name="name" type="text" th:value="${admin?.userName}" class="easyui-textbox" required style="width:100%;">
         </div>
 
         <div class="form_line"  style="margin-bottom: 10px">
             <label for="pwd">密码:</label>
-            <input id="pwd" name="pwd" type="text" th:value="${admin?.pwd}" class="easyui-textbox" required style="width:100%;">
+            <input id="pwd" name="pwd" type="text" th:value="${admin?.password}" class="easyui-textbox" required style="width:100%;">
         </div>
 
         <div class="form-line" style="margin-bottom: 10px">

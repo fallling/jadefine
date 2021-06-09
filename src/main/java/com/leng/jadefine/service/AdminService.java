@@ -17,7 +17,7 @@ public interface AdminService {
 
     Admin queryById(int id);
 
-    List<Admin> queryByName(String name);
+    Admin queryByUserName(String name);
 
     List<Admin> queryByRole(String role);
 

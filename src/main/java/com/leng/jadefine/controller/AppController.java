@@ -1,6 +1,8 @@
 package com.leng.jadefine.controller;
 
+import com.leng.jadefine.model.Admin;
 import com.leng.jadefine.model.User;
+import com.leng.jadefine.service.impl.AdminServiceImpl;
 import com.leng.jadefine.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,11 +24,11 @@ import javax.servlet.http.HttpSession;
 public class AppController {
 
     @Autowired
-    private UserServiceImpl userService;
+    private AdminServiceImpl adminService;
     @RequestMapping()
-    public String index(@SessionAttribute(value = "user",required = false) User user){
-        System.out.println(user);
-        if(user==null){
+    public String index(@SessionAttribute(value = "admin",required = false) Admin admin){
+        System.out.println(admin);
+        if(admin==null){
             return "login";
         }
         return "index";
@@ -34,13 +36,14 @@ public class AppController {
 
     @PostMapping("/login")
     public String login(@RequestParam String account, @RequestParam String password, HttpSession session){
-        User user = userService.queryByUserName(account);
-        if(user != null){
+        //User user = userService.queryByUserName(account);
+        Admin admin = adminService.queryByUserName(account);
+        if(admin != null){
             /*用户存在*/
-            if(user.getPassword().equals(password)){
-                System.out.println(user);
+            if(admin.getPassword().equals(password)){
+                System.out.println(admin);
                 session.removeAttribute("error");
-                session.setAttribute("user",user);
+                session.setAttribute("admin",admin);
                 return "redirect:/";
             }else
             {
