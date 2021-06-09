@@ -13,26 +13,27 @@
     </head>
     <body class="body">
         <div style="text-align: center;color: #e6e6e6;margin-top: 150px">
-            <h2>欢迎使用</h2>
+            <h1>欢迎使用</h1>
             <p></p>
         </div>
         <div style="margin:20px 0;"></div>
-        <div class="easyui-panel" style="width:400px;padding:50px 60px;">
+        <div class="easyui-dialog" title="登陆" style="width:400px;padding:50px 60px;" data-options="closeable:false,draggable:false">
             <form id="ff" th:method="post" th:action="@{/login}">
                 <div style="margin-bottom:20px">
-                    <label for="username"></label>
-                    <input id="username" class="easyui-textbox" prompt="Username" iconWidth="28"
-                           style="width:100%;height:34px;padding:10px;" name="userName" data-options="required:true"/>
+                    <label for="account"></label>
+                    <input id="account" class="easyui-textbox" prompt="account" iconWidth="28"
+                           style="width:100%;height:34px;padding:10px;" name="account" data-options="required:true"/>
                 </div>
                 <div style="margin-bottom:20px">
                     <label for="password"></label>
-                    <input id="password" class="easyui-passwordbox" prompt="Password" iconWidth="28"
+                    <input id="password" class="easyui-passwordbox" prompt="password" iconWidth="28"
                            style="width:100%;height:34px;padding:10px" name="password" data-options="required:true">
                 </div>
                 <div>
                     <input type="submit" value="登陆" style="width:100%;height:34px;">
                 </div>
             </form>
+            <div th:text="${session.error}" style="margin-left: 100px;color: red"></div>
         </div>
     </body>
 </html>

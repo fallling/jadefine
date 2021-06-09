@@ -2,15 +2,11 @@ package com.leng.jadefine.service.impl;
 
 import com.leng.jadefine.mapper.OrderMapper;
 import com.leng.jadefine.mapper.OrderDetailMapper;
-import com.leng.jadefine.mapper.OrderMapper;
 import com.leng.jadefine.model.Order;
-import com.leng.jadefine.model.Order;
-import com.leng.jadefine.model.OrderDetail;
 import com.leng.jadefine.service.OrderService;
 import com.leng.jadefine.utils.MybatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
