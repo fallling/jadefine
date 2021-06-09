@@ -53,8 +53,8 @@ public class UserServiceImpl implements UserService {
     public void addUser(User user) {
         SqlSession sqlSession = MybatisUtil.getSqlSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        sqlSession.commit();
         userMapper.addUser(user);
+        sqlSession.commit();
         sqlSession.close();
     }
 
@@ -82,8 +82,9 @@ public class UserServiceImpl implements UserService {
     public void updateUser(User user) {
         SqlSession sqlSession = MybatisUtil.getSqlSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        sqlSession.commit();
         userMapper.updateUser(user);
+
+        sqlSession.commit();
         sqlSession.close();
     }
 
@@ -96,6 +97,9 @@ public class UserServiceImpl implements UserService {
             userMapper.updateUser(user);
         }else
             userMapper.addUser(user);
+
+        sqlSession.commit();
+        sqlSession.close();
     }
 
 

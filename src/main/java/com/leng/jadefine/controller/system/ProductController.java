@@ -48,7 +48,7 @@ public class ProductController {
 
     @PostMapping("list")
     @ResponseBody
-    public List<Product> list(Integer id,Model model){
+    public List<Product> list(Integer id){
         if(id!=null){
             Product product = productService.queryById(id);
             List<Product> productList = new ArrayList<Product>();

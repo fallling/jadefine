@@ -2,6 +2,7 @@ package com.leng.jadefine.controller.system;
 
 import com.leng.jadefine.conmmon.JsonResult;
 import com.leng.jadefine.model.Order;
+import com.leng.jadefine.model.Product;
 import com.leng.jadefine.service.impl.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,6 +42,7 @@ public class OrderController {
         if(id!=null){
             /*编辑*/
             Order order = orderService.queryById(id);
+            System.out.println(order);
             model.addAttribute("Order",order);
         }
         return "/system/order/form";
@@ -47,7 +50,13 @@ public class OrderController {
 
     @PostMapping("list")
     @ResponseBody
-    public List<Order> list(){
+    public List<Order> list(Integer id){
+        if(id!=null){
+            Order Order = orderService.queryById(id);
+            List<Order> orderList = new ArrayList<Order>();
+            orderList.add(Order);
+            return orderList;
+        }
         return orderService.queryAll();
     }
 

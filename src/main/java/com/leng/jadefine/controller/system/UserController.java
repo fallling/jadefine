@@ -1,6 +1,7 @@
 package com.leng.jadefine.controller.system;
 
 import com.leng.jadefine.conmmon.JsonResult;
+import com.leng.jadefine.model.Product;
 import com.leng.jadefine.model.User;
 import com.leng.jadefine.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,7 +45,13 @@ public class UserController {
 
     @PostMapping("list")
     @ResponseBody
-    public List<User> list(){
+    public List<User> list(Integer id){
+        if(id!=null){
+            User user = userService.queryById(id);
+            List<User> userList = new ArrayList<User>();
+            userList.add(user);
+            return userList;
+        }
         return userService.queryAll();
     }
 

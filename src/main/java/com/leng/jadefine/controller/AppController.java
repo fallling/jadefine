@@ -36,6 +36,7 @@ public class AppController {
     public String login(@RequestParam String account, @RequestParam String password, HttpSession session){
         User user = userService.queryByUserName(account);
         if(user != null){
+            /*用户存在*/
             if(user.getPassword().equals(password)){
                 System.out.println(user);
                 session.removeAttribute("error");
@@ -47,6 +48,7 @@ public class AppController {
                 return "login";
             }
         }else{
+            /*用户不存在*/
             session.setAttribute("error","账号不存在");
 
             return "login";

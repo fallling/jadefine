@@ -1,2 +1,7 @@
-<div id="userListGrid"></div>
 <script type="text/javascript" src="../static/js/user.js" th:src="@{js/user.js}"></script>
+<div id="menu">
+    <a href="#" class="easyui-linkbutton" iconcls="icon-add" style="margin-right: 100px" plain="true" onclick="formDialog()">添加用户</a>
+    <label for="userId"></label><input id="userId" prompt="用户id" class="easyui-textbox" >
+    <a href="#" class="easyui-linkbutton" plain="true" data-options="iconCls:'icon-search'" onclick="searchById()">搜索</a>
+</div>
+<div id="userListGrid"></div>

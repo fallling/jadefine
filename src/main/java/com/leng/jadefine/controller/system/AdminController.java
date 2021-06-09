@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,7 +48,13 @@ public class AdminController {
 
     @PostMapping("list")
     @ResponseBody
-    public List<Admin> list(){
+    public List<Admin> list(Integer id){
+        if(id!=null){
+            Admin admin = adminService.queryById(id);
+            List<Admin> adminList = new ArrayList<>();
+            adminList.add(admin);
+            return adminList;
+        }
         return adminService.queryAll();
     }
 

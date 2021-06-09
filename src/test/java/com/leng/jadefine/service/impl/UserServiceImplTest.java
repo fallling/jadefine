@@ -47,9 +47,10 @@ class UserServiceImplTest {
     @Test
     void updateUser() {
         User user = new User();
+        user.setId(13);
         user.setUserName("玫瑰剑士");
         user.setPassword("000000");
-        user.setRealName("夏洛特");
+        user.setRealName("李咯特");
         userService.updateUser(user);
     }
 
