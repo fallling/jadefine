@@ -68,6 +68,7 @@ public class AdminController {
     @GetMapping("delete")
     @ResponseBody
     public JsonResult delete(int id){
+        System.out.println("删除用户");
         Admin admin = adminService.queryById(id);
         if(admin!=null){
             if(admin.getRole().equals("超级管理员")){

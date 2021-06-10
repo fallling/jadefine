@@ -1,10 +1,7 @@
 package com.leng.jadefine.controller.system;
 
 import com.leng.jadefine.conmmon.JsonResult;
-import com.leng.jadefine.model.Order;
-import com.leng.jadefine.model.Product;
 import com.leng.jadefine.model.User;
-import com.leng.jadefine.service.impl.OrderServiceImpl;
 import com.leng.jadefine.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -31,9 +28,9 @@ public class UserController {
     @Qualifier("userService")
     private UserServiceImpl userService;
 
-    @Autowired
+/*    @Autowired
     @Qualifier("orderService")
-    private OrderServiceImpl orderService;
+    private OrderServiceImpl orderService;*/
 
     @RequestMapping
     public void index(){
@@ -63,8 +60,7 @@ public class UserController {
 
     @PostMapping({"save","update"})
     @ResponseBody
-    public JsonResult from(@Valid User user){
-        System.out.println(user);
+    public JsonResult from(@Valid User user, BindingResult bindingResult){
         userService.saveUser(user);
         return JsonResult.success();
     }
@@ -75,10 +71,10 @@ public class UserController {
         System.out.println(id);
         User user = userService.queryById(id);
         if(user!=null){
-            List<Order> orderList = orderService.queryByUserId(user.getId());
+            /*List<Order> orderList = orderService.queryByUserId(user.getId());
             if(orderList!=null){
                 return JsonResult.error("该用户存在未完成订单，不可删除");
-            }
+            }*/
             userService.deleteUser(id);
             return JsonResult.success();
         }else {

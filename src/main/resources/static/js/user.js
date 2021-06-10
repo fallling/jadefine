@@ -65,7 +65,7 @@ gridPanel.on("click","a.edit",function () {
 /*表单窗口*/
 function formDialog(id) {
     const dialog = $('<div/>').dialog({
-        title:(id?'编辑':'添加')+'管理员',
+        title:(id?'编辑':'添加')+'用户',
         href: '/system/user/'+(id?'load?id='+id:'form'),
         width: 420,
         height: 550,
@@ -81,18 +81,22 @@ function formDialog(id) {
                     if (userForm.form("validate")) {
                         $.post("/system/user/"+(id?'update':'save'),
                             userForm.serialize()
-                        ).success(function (data) {
-                            if (data.msg){
-                                $.messager.show({
-                                    title: 'Error',
-                                    msg: data.msg,
-                                    style:{}
-                                });
-                            } else {
-                                $('#userForm').dialog('close');		// close the dialog
-                                $('#userListGrid').datagrid('reload');	// reload the user data
-                            }
+                        ).success(function () {
+                            userListGrid.datagrid("reload");
+                            dialog.dialog("close")
                         });
+                    }
+                },
+                success: function(result){
+                    var result = eval('('+result+')');
+                    if (result.msg){
+                        $.messager.show({
+                            title: 'Error',
+                            msg: result.msg
+                        });
+                    } else {
+                        $('#adminForm').dialog('close');		// close the dialog
+                        $('#adminListGrid').datagrid('reload');	// reload the user data
                     }
                 }
             },
@@ -101,7 +105,6 @@ function formDialog(id) {
                 iconCls:'icon-cancel',
                 handler:function () {
                     dialog.dialog("close");
-
                 }
             }
         ]

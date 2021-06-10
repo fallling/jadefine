@@ -33,7 +33,14 @@ gridPanel.on("click","a.edit",function () {
     var id =this.dataset.id;
     $.messager.confirm("提示","是否删除？",function (r) {
         if (r){
-            $.get("/system/admin/delete?id="+id).success(function () {
+            $.get("/system/admin/delete?id="+id).success(function (data) {
+                if(data.msg){
+                    $.messager.show({
+                        title: 'Error',
+                        msg: data.msg,
+                        style:{}
+                    });
+                }else
                 adminListGrid.datagrid("reload");
             })
         }
@@ -66,10 +73,10 @@ function formDialog(id) {
                 },
                 success: function(result){
                     var result = eval('('+result+')');
-                    if (result.errorMsg){
+                    if (result.msg){
                         $.messager.show({
                             title: 'Error',
-                            msg: result.errorMsg
+                            msg: result.msg
                         });
                     } else {
                         $('#adminForm').dialog('close');		// close the dialog

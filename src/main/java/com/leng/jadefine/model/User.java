@@ -17,14 +17,10 @@ import java.sql.Date;
 public class User {
     private int id;
     private String userName;
-
-    @Size(max = 6,min = 6)
     private String password;
     private String realName;
     private String sex;
     private String address;
-
-    @Email
     private String email;
     private int score;
     private Date regDate;
