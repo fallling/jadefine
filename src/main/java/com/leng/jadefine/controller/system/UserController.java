@@ -61,6 +61,12 @@ public class UserController {
     @PostMapping({"save","update"})
     @ResponseBody
     public JsonResult from(@Valid User user, BindingResult bindingResult){
+        if(user.getId()==0){
+            User user1 = userService.queryByUserName(user.getUserName());
+            if(user1!=null){
+                return JsonResult.error("用户名重复");
+            }
+        }
         userService.saveUser(user);
         return JsonResult.success();
     }

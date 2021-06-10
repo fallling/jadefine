@@ -2,6 +2,7 @@ package com.leng.jadefine.controller.system;
 
 import com.leng.jadefine.conmmon.JsonResult;
 import com.leng.jadefine.model.Admin;
+import com.leng.jadefine.model.User;
 import com.leng.jadefine.service.impl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -61,6 +62,12 @@ public class AdminController {
     @PostMapping({"save","update"})
     @ResponseBody
     public JsonResult from(@Valid Admin admin, BindingResult bindingResult){
+        if(admin.getId()==0){
+            Admin admin1 = adminService.queryByUserName(admin.getUserName());
+            if(admin1!=null){
+                return JsonResult.error("用户名重复");
+            }
+        }
         adminService.saveAdmin(admin);
         return JsonResult.success();
     }

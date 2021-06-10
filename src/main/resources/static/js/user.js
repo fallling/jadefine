@@ -81,24 +81,20 @@ function formDialog(id) {
                     if (userForm.form("validate")) {
                         $.post("/system/user/"+(id?'update':'save'),
                             userForm.serialize()
-                        ).success(function () {
-                            userListGrid.datagrid("reload");
-                            dialog.dialog("close")
+                        ).success(function (data) {
+                            if (data.msg){
+                                $.messager.show({
+                                    title: 'Error',
+                                    msg: data.msg,
+                                    style: {}
+                                });
+                            } else {
+                                userListGrid.datagrid("reload");
+                                dialog.dialog("close")
+                            }
                         });
                     }
                 },
-                success: function(result){
-                    var result = eval('('+result+')');
-                    if (result.msg){
-                        $.messager.show({
-                            title: 'Error',
-                            msg: result.msg
-                        });
-                    } else {
-                        $('#adminForm').dialog('close');		// close the dialog
-                        $('#adminListGrid').datagrid('reload');	// reload the user data
-                    }
-                }
             },
             {
                 text: '取消',
