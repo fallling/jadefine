@@ -47,8 +47,16 @@ gridPanel.on("click","a.edit",function () {
     var id =this.dataset.id;
     $.messager.confirm("提示","是否删除？",function (r) {
         if (r){
-            $.get("/system/user/delete?id="+id).success(function () {
-                userListGrid.datagrid("reload");
+            $.get("/system/user/delete?id="+id).success(function (data) {
+                if (data.msg){
+                    $.messager.show({
+                        title: 'Error',
+                        msg: data.msg,
+                        style:{}
+                    });
+                } else {
+                    userListGrid.datagrid("reload");
+                }
             })
         }
     })
