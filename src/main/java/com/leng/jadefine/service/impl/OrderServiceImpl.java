@@ -41,6 +41,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<Order> queryByUserId(int userId){
+        SqlSession sqlSession = MybatisUtil.getSqlSession();
+        OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+        List<Order> orderList = orderMapper.queryByUserId(userId);
+        sqlSession.commit();
+        sqlSession.close();
+        return orderList;
+    }
+    @Override
     public void addOrder(Order order) {
         SqlSession sqlSession = MybatisUtil.getSqlSession();
         OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
@@ -75,6 +84,7 @@ public class OrderServiceImpl implements OrderService {
         SqlSession sqlSession = MybatisUtil.getSqlSession();
         OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
         orderMapper.updateOrder(order);
+
         sqlSession.commit();
         sqlSession.close();
     }

@@ -73,22 +73,18 @@ function formDialog(id) {
                     if (userForm.form("validate")) {
                         $.post("/system/user/"+(id?'update':'save'),
                             userForm.serialize()
-                        ).success(function () {
-                            userListGrid.datagrid("reload");
-                            dialog.dialog("close");
+                        ).success(function (data) {
+                            if (data.msg){
+                                $.messager.show({
+                                    title: 'Error',
+                                    msg: data.msg,
+                                    style:{}
+                                });
+                            } else {
+                                $('#userForm').dialog('close');		// close the dialog
+                                $('#userListGrid').datagrid('reload');	// reload the user data
+                            }
                         });
-                    }
-                },
-                success: function(result){
-                    var result = eval('('+result+')');
-                    if (result.errorMsg){
-                        $.messager.show({
-                            title: 'Error',
-                            msg: result.errorMsg
-                        });
-                    } else {
-                        $('#userForm').dialog('close');		// close the dialog
-                        $('#userListGrid').datagrid('reload');	// reload the user data
                     }
                 }
             },

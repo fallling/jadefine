@@ -1,53 +1,93 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
-<form id="userForm" th:method="post" th:action="@{/system/user/save}" novalidate style="width: 360px; height: 400px;margin:0;padding:20px 50px">
 
+<form id="userForm" th:method="post" th:action="@{/system/user/save}" novalidate style="width: 360px; height: 400px;margin:0;padding:20px 50px">
     <h3>用户信息</h3>
-    <input type="hidden" name="id" th:value="${user?.id}">
+    <input type="hidden" name="id" th:default=0 th:value="${user?.id}">
+    <!--用户名-->
       <div style="margin-bottom:10px">
         <label for="userName"></label>
-        <input id="userName" name="userName" th:value="${user?.userName}" class="easyui-textbox" required label="用户名:" style="width:100%;">
+        <input id="userName"
+               name="userName"
+               th:value="${user?.userName}"
+               class="easyui-textbox"
+               required
+               label="用户名:"
+               style="width:100%;">
       </div>
+
+    <!--密码-->
       <div style="margin-bottom:10px">
         <label for="password"></label>
-        <input id="password" name="password" th:value="${user?.getPassword()}" class="easyui-textbox" required label="密码:" style="width:100%">
+        <input
+                id="password"
+                name="password"
+                th:value="${user?.getPassword()}"
+                class="easyui-textbox"
+                required label="密码:"
+                type="password"
+                style="width:100%" data-options="validType:['length[6,10]']">
       </div>
+
+    <!--真实姓名-->
       <div style="margin-bottom:10px">
         <label for="realName"></label>
         <input id="realName" name="realName" th:value="${user?.getRealName()}" class="easyui-textbox" required label="真实姓名:" style="width:100%">
       </div>
+
+    <!--性别-->
       <div style="margin-bottom:10px">
-        <label for="sex"></label>
-        <input
-                id="sex"
-                name="sex"
-                th:value="${user?.getSex()}"
-                class="easyui-textbox"
-                label="性别:"
-                style="width:100%">
-<!--            <label style="margin-right: 40px">性别:</label>
-            <label for="male">男:</label>
-            <input type="radio" id="male" name="sex" th:checked="${user?.sex.equals('男')}"  th:value="男">
-            <label for="female">女:</label>
-            <input type="radio" id="female" name="sex" th:checked="${user?.sex.equals('女')}" th:value="女">-->
+        <div th:switch="${user?.sex}">
+          <p th:case="男">
+              <label style="margin-right: 40px">性别：</label>
+            <label><input name="sex" type="radio" value="男" checked/>男</label>
+            <label><input name="sex" type="radio" value="女" />女</label>
+          </p>
+
+          <p th:case="女">
+              <label style="margin-right: 40px">性别：</label>
+            <label><input name="sex" type="radio" value="男" />男</label>
+            <label><input name="sex" type="radio" value="女" checked/>女</label>
+          </p>
+          <p th:case="null">
+              <label style="margin-right: 40px">性别：</label>
+          <label><input name="sex" type="radio" value="男" checked/>男</label>
+          <label><input name="sex" type="radio" value="女" />女</label>
+        </p>
+        </div>
       </div>
+
+    <!--地址-->
       <div style="margin-bottom:10px">
         <label for="address"></label>
         <input id="address" name="address" th:value="${user?.address}" class="easyui-textbox" label="地址:" style="width:100%">
       </div>
+
+    <!--邮箱-->
       <div style="margin-bottom:10px">
         <label for="email"></label>
-        <input id="email" name="email" th:value="${user?.email}" class="easyui-textbox" label="邮箱:" style="width:100%">
+        <input id="email"
+               name="email"
+               th:value="${user?.email}"
+               class="easyui-textbox"
+               label="邮箱:"
+               style="width:100%" data-options="validType:'email'">
       </div>
+
+    <!--等级-->
       <div style="margin-bottom:10px">
         <label for="score"></label>
-        <input id="score" name="score" th:value="${user?.score}" class="easyui-textbox" label="等级:" style="width:100%">
+        <input id="score" name="score" th:default=1 th:value="${user?.score}" class="easyui-textbox" label="等级:" style="width:100%">
       </div>
-      <div style="margin-bottom:10px">
+
+    <!--注册日期-->
+      <div style="margin-bottom:10px" th:if="${user?.regDate}">
         <label for="regDate"></label>
         <input id="regDate" name="regDate" th:value="${user?.regDate}" class="easyui-textbox" label="注册日期:" style="width:100%">
       </div>
+
+    <!--状态-->
       <div style="margin-bottom:10px">
         <label for="status" style="margin-right: 40px">状态:</label>
         <!--<input id="status" name="status" th:value="${user?.status}" class="easyui-textbox" label="状态:" style="width:100%">-->
@@ -58,6 +98,7 @@
                 th:checked="${user?.status}"
         >
       </div>
+
 </form>
 </body>
 </html>

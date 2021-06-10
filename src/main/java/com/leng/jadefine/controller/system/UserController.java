@@ -1,8 +1,11 @@
 package com.leng.jadefine.controller.system;
 
 import com.leng.jadefine.conmmon.JsonResult;
+import com.leng.jadefine.model.Order;
 import com.leng.jadefine.model.Product;
 import com.leng.jadefine.model.User;
+import com.leng.jadefine.service.impl.AdminServiceImpl;
+import com.leng.jadefine.service.impl.OrderServiceImpl;
 import com.leng.jadefine.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,9 +15,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * FileName:UserController
@@ -28,6 +33,10 @@ public class UserController {
     @Autowired
     @Qualifier("userService")
     private UserServiceImpl userService;
+
+    @Autowired
+    @Qualifier("orderService")
+    private OrderServiceImpl orderService;
 
     @RequestMapping
     public void index(){
@@ -57,7 +66,13 @@ public class UserController {
 
     @PostMapping({"save","update"})
     @ResponseBody
-    public JsonResult from(@Valid User user , BindingResult bindingResult){
+    public JsonResult from(@Valid User user){
+        User user1=userService.queryByUserName(user.getUserName());
+        System.out.println(user1);
+        if(user1!=null){
+            System.out.println("用户名重复");
+            return JsonResult.error("用户名重复");
+        }
         System.out.println(user);
         userService.saveUser(user);
         return JsonResult.success();
@@ -66,7 +81,6 @@ public class UserController {
     @GetMapping("delete")
     @ResponseBody
     public JsonResult delete(int id){
-        System.out.println(id);
         User user = userService.queryById(id);
         if(user!=null){
             userService.deleteUser(id);

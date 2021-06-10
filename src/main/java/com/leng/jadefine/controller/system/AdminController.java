@@ -61,7 +61,6 @@ public class AdminController {
     @PostMapping({"save","update"})
     @ResponseBody
     public JsonResult from(@Valid Admin admin, BindingResult bindingResult){
-        System.out.println(admin);
         adminService.saveAdmin(admin);
         return JsonResult.success();
     }
@@ -69,10 +68,12 @@ public class AdminController {
     @GetMapping("delete")
     @ResponseBody
     public JsonResult delete(int id){
-        System.out.println(id);
         Admin admin = adminService.queryById(id);
         if(admin!=null){
-            adminService.deleteAdmin(id);
+            if(admin.getRole().equals("超级管理员")){
+                return JsonResult.error("超级管理员不能删除");
+            }else
+                adminService.deleteAdmin(id);
             return JsonResult.success();
         }else {
             return JsonResult.error();

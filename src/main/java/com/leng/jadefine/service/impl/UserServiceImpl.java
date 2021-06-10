@@ -1,7 +1,9 @@
 package com.leng.jadefine.service.impl;
 
+import com.leng.jadefine.mapper.OrderDetailMapper;
 import com.leng.jadefine.mapper.OrderMapper;
 import com.leng.jadefine.mapper.UserMapper;
+import com.leng.jadefine.model.OrderDetail;
 import com.leng.jadefine.model.User;
 import com.leng.jadefine.service.UserService;
 import com.leng.jadefine.utils.MybatisUtil;
@@ -68,6 +70,7 @@ public class UserServiceImpl implements UserService {
             SqlSession sqlSession1 = MybatisUtil.getSqlSession();
             OrderMapper orderMapper = sqlSession1.getMapper(OrderMapper.class);
             orderMapper.deleteOrderByUserId(id);
+
             sqlSession1.commit();
             sqlSession1.close();
 

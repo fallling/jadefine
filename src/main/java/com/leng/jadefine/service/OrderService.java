@@ -18,6 +18,8 @@ public interface OrderService {
 
     Order queryById(int id);
 
+    List<Order> queryByUserId(int userId);
+
     void addOrder(Order order);
 
     /*删除订单 @Param id*/

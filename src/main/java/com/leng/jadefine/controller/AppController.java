@@ -27,7 +27,6 @@ public class AppController {
     private AdminServiceImpl adminService;
     @RequestMapping()
     public String index(@SessionAttribute(value = "admin",required = false) Admin admin){
-        System.out.println(admin);
         if(admin==null){
             return "login";
         }
@@ -41,7 +40,6 @@ public class AppController {
         if(admin != null){
             /*用户存在*/
             if(admin.getPassword().equals(password)){
-                System.out.println(admin);
                 session.removeAttribute("error");
                 session.setAttribute("admin",admin);
                 return "redirect:/";
@@ -53,7 +51,6 @@ public class AppController {
         }else{
             /*用户不存在*/
             session.setAttribute("error","账号不存在");
-
             return "login";
         }
     }

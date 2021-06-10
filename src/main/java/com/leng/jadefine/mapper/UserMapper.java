@@ -30,7 +30,7 @@ public interface UserMapper {
                 @Param("answer") String answer,@Param("email") String email,@Param("favorite") String favorite,
                 @Param("score") int score);*/
 
-    @Insert("insert into user_info(userName, password, realName, sex, address, email, score,status)VALUES (#{userName},#{password},#{realName},#{sex},#{address},#{email},#{score},#{status})")
+    @Insert("insert into user_info(userName, password, realName, sex, address, email, score, status)VALUES (#{userName},#{password},#{realName},#{sex},#{address},#{email},#{score},#{status})")
     void addUser(User user);
 
     @Delete("delete from user_info where id=#{id}")
